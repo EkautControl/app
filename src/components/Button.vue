@@ -1,7 +1,7 @@
 <template>
   <button @click="handleClick" :style="`background-color: #${bgColor}`">
-    <img v-if="icon !== null" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon">
     <div class="text">{{ text }}</div>
+    <img v-if="icon !== null" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon">
   </button>
 </template>
 
@@ -20,7 +20,7 @@ style.<style scoped>
 button {
   border: none;
   color: white;
-  padding: 0 20px;
+  padding: 0 15px;
   height: 35px;
   align-self: center;
   font-weight: bold;
@@ -34,5 +34,5 @@ button {
   align-self: center;
 }
 
-.btn-icon { margin-right: 10px; }
+.btn-icon { margin-left: 8px; }
 </style>
