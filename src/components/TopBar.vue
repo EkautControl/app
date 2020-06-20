@@ -1,0 +1,131 @@
+<template>
+  <b-navbar
+    class="top-nav"
+    :mobile-burger="false"
+    :transparent="true"
+    :is-active="true"
+    :closeOnClick="false"
+    :fixed-top="true"
+  >
+    <template slot="end">
+      <b-navbar-item v-if="!isTablet">
+        <Button
+          text="Reportar um problema"
+          bgColor="E47E00"
+          icon="alert.svg"
+          class="btn"
+        />
+      </b-navbar-item>
+      <b-navbar-item class="menu-icon" v-if="isTablet">
+        <img
+            src="@/assets/burger.svg"
+            alt="Menu"
+            @click="toggleSideBar"
+          />
+      </b-navbar-item>
+      <b-navbar-item>
+        <img src="@/assets/notification.svg" alt="Notification" class="notification-icon">
+        <div class="notification-count">2</div>
+      </b-navbar-item>
+      <b-navbar-item href="#">
+        <b-dropdown aria-role="list" :mobile-modal="false">
+          <div class="user-initials" slot="trigger">EL</div>
+          <b-dropdown-item aria-role="listitem" @click="logOut" :custom="true">
+            Sair
+          </b-dropdown-item>
+        </b-dropdown>
+    </b-navbar-item>
+    </template>
+  </b-navbar>
+</template>
+
+<script>
+import Button from './Button.vue';
+
+export default {
+  components: {
+    Button,
+  },
+  data() {
+    return {
+      isTablet: (window.innerWidth < 1024),
+    };
+  },
+  methods: {
+    logOut() {
+      console.log('LogOut');
+    },
+    toggleSideBar() {
+      this.$store.commit('TOGGLE_SIDE_BAR');
+    },
+  },
+};
+</script>
+
+<style>
+.top-nav {
+  background-color: white;
+  box-shadow: 0px 4px 5px rgba(12, 17, 60, 0.15);
+}
+
+.btn { margin-right: 25px; }
+
+.navbar-item {
+  display: flex;
+  align-self: center;
+}
+
+.notification-icon { position: relative; }
+
+.notification-count {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    z-index: 999;
+    border-radius: 50%;
+    background-color: #E47E00;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.user-initials {
+  width: 45px;
+  height: 45px;
+  background-color: #345087;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin: auto 20px;
+}
+
+.dropdown-content {
+  width: 80px;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar-brand { display: none; }
+
+  .menu-icon {
+    left: 15px;
+    position: absolute;
+  }
+
+  .navbar-end {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .dropdown-content {
+    width: 80px;
+    padding: 0;
+  }
+}
+</style>
