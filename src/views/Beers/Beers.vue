@@ -34,8 +34,7 @@ export default {
     BeerCard,
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     async getData() {

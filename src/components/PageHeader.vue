@@ -4,13 +4,15 @@
       <h1 class="title">{{ $route.meta.title }}</h1>
     </div>
     <div class="column btn">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
 
 <style scoped>
-.header { margin-bottom: 20px; }
+.header {
+  margin-bottom: 20px;
+}
 
 .btn {
   display: flex;
@@ -18,6 +20,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .btn { justify-content: flex-start; }
+  .btn {
+    justify-content: flex-start;
+  }
 }
 </style>

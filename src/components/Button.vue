@@ -1,7 +1,7 @@
 <template>
   <button @click="handleClick" :style="`background-color: #${bgColor}`" :class="`${size}`">
     <div class="text">{{ text }}</div>
-    <img v-if="icon" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon">
+    <img v-if="icon" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon" />
   </button>
 </template>
 
@@ -33,11 +33,14 @@ button {
   cursor: pointer;
 }
 
-.btn-icon, .text {
+.btn-icon,
+.text {
   align-self: center;
 }
 
-.btn-icon { margin-left: 8px; }
+.btn-icon {
+  margin-left: 8px;
+}
 
 .lg {
   font-size: 14px;
@@ -45,6 +48,8 @@ button {
 }
 
 @media screen and (max-width: 1044px) {
-  .lg { font-size: 12px; }
+  .lg {
+    font-size: 12px;
+  }
 }
 </style>
