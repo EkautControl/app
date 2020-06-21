@@ -1,7 +1,7 @@
 <template>
-  <button @click="handleClick" :style="`background-color: #${bgColor}`">
+  <button @click="handleClick" :style="`background-color: #${bgColor}`" :class="`${size}`">
     <div class="text">{{ text }}</div>
-    <img v-if="icon !== null" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon">
+    <img v-if="icon" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon">
   </button>
 </template>
 
@@ -9,14 +9,15 @@
 export default {
   props: {
     icon: { type: String },
-    text: { type: String },
-    bgColor: { type: String },
+    size: { type: String, default: '' },
+    text: { type: String, default: 'Novo botão' },
+    bgColor: { type: String, default: '3396E1' },
     handleClick: { type: Function, default: () => {} },
   },
 };
 </script>
 
-style.<style scoped>
+<style scoped>
 button {
   border: none;
   color: white;
@@ -28,6 +29,8 @@ button {
   font-size: 11px;
   border-radius: 5px;
   display: flex;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .btn-icon, .text {
@@ -35,4 +38,13 @@ button {
 }
 
 .btn-icon { margin-left: 8px; }
+
+.lg {
+  font-size: 14px;
+  padding: 10px 20px;
+}
+
+@media screen and (max-width: 1044px) {
+  .lg { font-size: 12px; }
+}
 </style>

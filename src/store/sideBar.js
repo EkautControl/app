@@ -6,7 +6,7 @@ export default {
     },
   },
   mutations: {
-    TOGGLE_SIDE_BAR(state) {
+    toggleSideBar(state) {
       state.sidebar = !state.sidebar;
     },
   },

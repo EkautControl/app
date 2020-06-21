@@ -9,7 +9,12 @@
 
 * { font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif; }
 
-.html { background-color: #E5E5E5; }
+html { background-color: #e5e5e5c9; }
+
+ins {
+  text-decoration: none;
+  font-weight: normal;
+}
 
 #app {
   font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;

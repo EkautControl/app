@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     toggleSideBar() {
-      this.$store.commit('TOGGLE_SIDE_BAR');
+      this.$store.commit('toggleSideBar');
     },
     handleRoute(routeName) {
       if (this.$route.name !== routeName) this.$router.push({ name: routeName }).catch(() => {});
@@ -81,6 +81,7 @@ export default {
   width: 170px;
   display: block;
   margin: 50px auto;
+  cursor: pointer;
 }
 
 .menu-list a.is-active {
@@ -89,7 +90,7 @@ export default {
 }
 
 .menu-list a {
-  margin: 10px 40px;
+  margin: 10px 50px;
   color: white;
   font-size: 16px;
   line-height: 22px;
@@ -97,7 +98,12 @@ export default {
 }
 
 .menu-list a.is-active {
-    border-left: 3px #E47E00 solid;
+  border-left: 3px #E47E00 solid;
+}
+
+.menu-list a:hover {
+  background-color: transparent;
+  color: white;
 }
 
 @media screen and (max-width: 1024px) {
