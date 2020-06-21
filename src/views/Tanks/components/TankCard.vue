@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-4-desktop is-3-widescreen">
+  <div class="column is-4-desktop is-3-widescreen is-3-mobile">
     <div class="card">
       <div class="header">
         <p class="header-value">{{ tankNumber }}</p>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Phases from '../enums/productionPhase';
+import Phases from '@/enums/productionPhase';
 
 export default {
   data() {
