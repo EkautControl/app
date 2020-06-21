@@ -23,7 +23,7 @@ import PageHeader from '../../components/PageHeader.vue';
 import Divider from '../../components/Divider.vue';
 import Button from '../../components/Button.vue';
 import CardList from '../../components/CardList.vue';
-import TankCard from '../../components/TankCard.vue';
+import TankCard from './components/TankCard.vue';
 
 export default {
   components: {
