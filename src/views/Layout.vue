@@ -5,7 +5,9 @@
     </div>
     <div>
       <TopBar/>
-      <router-view class="view"/>
+      <div class="views">
+        <router-view class="view"/>
+      </div>
     </div>
   </main>
 </template>
@@ -22,15 +24,26 @@ export default {
 };
 </script>
 
-<style scoped>
-.view {
-  background-color: #E5E5E5;
+<style>
+.views {
   margin-left: 260px;
   margin-top: 10px;
-  min-height: 92vh;
+}
+
+.view { padding: 50px 60px; }
+
+.view h1 .title {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
 }
 
 @media screen and (max-width: 1023px) {
-  .view { margin-left: 0; }
+  .views {
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+  .view { padding: 50px; }
 }
 </style>

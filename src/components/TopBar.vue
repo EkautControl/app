@@ -8,12 +8,11 @@
     :fixed-top="true"
   >
     <template slot="end">
-      <b-navbar-item v-if="!isTablet">
+      <b-navbar-item v-if="!isTablet" class="btn-margin">
         <Button
-          text="Reportar um problema"
+          text="Reportar problema"
           bgColor="E47E00"
-          icon="alert.svg"
-          class="btn"
+          icon="alert-white.svg"
         />
       </b-navbar-item>
       <b-navbar-item class="menu-icon" v-if="isTablet">
@@ -56,7 +55,7 @@ export default {
       console.log('LogOut');
     },
     toggleSideBar() {
-      this.$store.commit('TOGGLE_SIDE_BAR');
+      this.$store.commit('toggleSideBar');
     },
   },
 };
@@ -68,7 +67,7 @@ export default {
   box-shadow: 0px 4px 5px rgba(12, 17, 60, 0.15);
 }
 
-.btn { margin-right: 25px; }
+.btn-margin { margin-right: 25px; }
 
 .navbar-item {
   display: flex;
