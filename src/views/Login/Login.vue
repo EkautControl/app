@@ -15,7 +15,7 @@
         <b-input type="email"
           custom-class="sign-in-input"
           v-model="email"
-          v-on:keyup.enter="handleLogin">
+          @keyup.enter.native="handleLogin">
         </b-input>
       </b-field>
       <b-field
@@ -27,7 +27,7 @@
         <b-input type="password"
           v-model="password"
           custom-class="sign-in-input"
-          v-on:keyup.enter="handleLogin"
+          @keyup.enter.native="handleLogin"
           password-reveal>
         </b-input>
       </b-field>
