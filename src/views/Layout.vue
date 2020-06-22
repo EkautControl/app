@@ -6,6 +6,7 @@
     <div>
       <TopBar />
       <div class="views">
+        <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="false" />
         <router-view class="view" />
       </div>
     </div>
@@ -20,6 +21,11 @@ export default {
   components: {
     Sidebar,
     TopBar,
+  },
+  computed: {
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
   },
 };
 </script>

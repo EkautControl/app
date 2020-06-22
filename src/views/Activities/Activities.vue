@@ -14,5 +14,15 @@ export default {
     PageHeader,
     Table,
   },
+  methods: {
+    async getData() {
+      const activitiesRequest = await this.$http.get('/activities');
+      const activities = activitiesRequest.data;
+      this.$store.commit('setActivities', activities);
+    },
+  },
+  mounted() {
+    this.getData();
+  },
 };
 </script>
