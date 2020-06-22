@@ -29,7 +29,7 @@
       <b-navbar-item href="#">
         <b-dropdown aria-role="list" :mobile-modal="false">
           <div class="user-initials" slot="trigger">EL</div>
-          <b-dropdown-item aria-role="listitem" @click="logOut" :custom="true">
+          <b-dropdown-item aria-role="listitem" @click="handleLogout">
             Sair
           </b-dropdown-item>
         </b-dropdown>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { Auth } from 'aws-amplify';
 import Button from './Button.vue';
 
 export default {
@@ -51,8 +52,9 @@ export default {
     };
   },
   methods: {
-    logOut() {
-      console.log('LogOut');
+    async handleLogout() {
+      await Auth.signOut();
+      this.$router.push({ name: 'Login' });
     },
     toggleSideBar() {
       this.$store.commit('toggleSideBar');

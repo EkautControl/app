@@ -7,15 +7,27 @@
         <img class="logo control" src="@/assets/logo.svg"
           alt="Ekaut Control logo"/>
       </div>
-      <b-field class="sign-in-form" :type="alertInvalid" label="Email">
+      <b-field
+        class="sign-in-form fields"
+        :type="alertInvalid"
+        label="Email"
+        label-position="inside">
         <b-input type="email"
+          custom-class="sign-in-input"
           v-model="email"
-          maxlength="30">
+          v-on:keyup.enter="handleLogin">
         </b-input>
       </b-field>
-      <b-field class="sign-in-form" :type="alertInvalid" :message="invalid" label="Senha">
+      <b-field
+        class="sign-in-form fields"
+        :type="alertInvalid"
+        :message="invalid"
+        label="Senha"
+        label-position="inside">
         <b-input type="password"
           v-model="password"
+          custom-class="sign-in-input"
+          v-on:keyup.enter="handleLogin"
           password-reveal>
         </b-input>
       </b-field>
@@ -82,9 +94,10 @@ export default {
 
 .login-card {
   display: flex;
-  min-height: 400px;
-  min-width: 400px;
-  max-width: 70%;
+  min-height: 300px;
+  min-width: 250px;
+  height: 70vh;
+  width: 35%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -94,8 +107,9 @@ export default {
 }
 
 .sign-in-form {
-  min-width: 250px;
+  min-width: 220px;
   width: 30%;
+  margin-bottom: 10px;
 }
 
 .label {
@@ -107,15 +121,39 @@ export default {
   border-radius: 12px;
 }
 
+.sign-in-form.button:hover {
+  background-color: #3396E1;
+}
+
+.sign-in-input {
+  box-shadow: none;
+  outline: 0;
+  background-color: #345087;
+  border-width: 0 0 1.4px 0;
+  border-radius: 0;
+  color: white;
+}
+
+.sign-in-input:focus {
+  border-color: white;
+  box-shadow: none;
+}
+
 .logos {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 10px;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .ekaut {
-  max-width: 30%;
-  min-width: 100px;
+  width: 10%;
+  min-width: 80px;
+}
+
+.logo.control {
+  width: 20%;
+  min-width: 150px;
 }
 </style>
