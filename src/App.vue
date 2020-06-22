@@ -1,15 +1,19 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
-* { font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif; }
+* {
+  font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
+}
 
-html { background-color: #e5e5e5c9; }
+html {
+  background-color: #e5e5e5c9;
+}
 
 ins {
   text-decoration: none;

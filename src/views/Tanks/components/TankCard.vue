@@ -39,7 +39,10 @@ export default {
   },
   methods: {
     setUpTanksDigits() {
-      this.tankNumber = this.tank.tank.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+      this.tankNumber = this.tank.tank.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false,
+      });
     },
     setUpRemainingTime() {
       const date = new Date(this.tank.production.startDate);
@@ -130,6 +133,8 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .header { padding-left: 25px; }
+  .header {
+    padding-left: 25px;
+  }
 }
 </style>

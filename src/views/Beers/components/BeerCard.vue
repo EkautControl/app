@@ -6,7 +6,8 @@
       </div>
       <p class="description">
         Tempo médio de produção:
-        <ins>{{ beer.averageTime }}</ins><br>
+        <ins>{{ beer.averageTime }}</ins
+        ><br />
         Cervejaria
         <ins>{{ beer.brewery }}</ins>
       </p>
@@ -29,7 +30,7 @@ export default {
     setUpColor() {
       if (this.isInactive) this.bgColor = 'B0B0B0';
       else {
-        this.bgColor = (this.beer.brewery === 'Ekaut') ? 'E47E00' : '9A2195';
+        this.bgColor = this.beer.brewery === 'Ekaut' ? 'E47E00' : '9A2195';
       }
     },
   },

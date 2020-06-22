@@ -34,8 +34,7 @@ export default {
     TankCard,
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     async getData() {

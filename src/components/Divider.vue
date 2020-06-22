@@ -18,7 +18,9 @@ export default {
 </script>
 
 <style scoped>
-.divider { margin-bottom: 0; }
+.divider {
+  margin-bottom: 0;
+}
 
 .title {
   font-size: 14px;
@@ -30,6 +32,8 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  .title { font-size: 13px; }
+  .title {
+    font-size: 13px;
+  }
 }
 </style>
