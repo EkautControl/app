@@ -33,6 +33,9 @@ export default {
     CardList,
     TankCard,
   },
+  data() {
+    return {};
+  },
   methods: {
     async getData() {
       const tanks = await this.$http.get('/activeTanks');
