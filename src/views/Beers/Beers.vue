@@ -40,10 +40,12 @@ export default {
     async getData() {
       const beersRequest = await this.$http.get('/beers');
       const beers = beersRequest.data;
+      this.$store.commit('stopLoading');
       this.$store.commit('setBeers', beers);
     },
   },
   mounted() {
+    this.$store.commit('startLoading');
     this.getData();
   },
   computed: {

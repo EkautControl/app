@@ -33,17 +33,16 @@ export default {
     CardList,
     TankCard,
   },
-  data() {
-    return {};
-  },
   methods: {
     async getData() {
       const tanks = await this.$http.get('/activeTanks');
       const activeTanks = tanks.data;
+      this.$store.commit('stopLoading');
       this.$store.commit('setActiveTanks', activeTanks);
     },
   },
   mounted() {
+    this.$store.commit('startLoading');
     this.getData();
   },
   computed: {
