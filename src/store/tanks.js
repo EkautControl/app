@@ -1,3 +1,5 @@
+import axios from '@/services/axios';
+
 export default {
   state: () => ({
     activeTanks: [],
@@ -15,11 +17,13 @@ export default {
     },
   },
   mutations: {
-    setActiveTanks(state, tanks) {
-      state.activeTanks = tanks;
+    async requestActiveTanks(state) {
+      const tanks = await axios.get('/activeTanks');
+      state.activeTanks = tanks.data;
     },
-    setInactiveTanks(state, tanks) {
-      state.inactiveTanks = tanks;
+    async requestInactiveTanks(state) {
+      const tanks = await axios.get('/inactiveTanks');
+      state.inactiveTanks = tanks.data;
     },
   },
 };

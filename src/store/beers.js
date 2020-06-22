@@ -1,3 +1,5 @@
+import axios from '@/services/axios';
+
 export default {
   state: () => ({
     beers: [],
@@ -16,7 +18,9 @@ export default {
     },
   },
   mutations: {
-    setBeers(state, beers) {
+    async requestBeers(state) {
+      const beersRequest = await axios.get('/beers');
+      const beers = beersRequest.data;
       state.beers = beers;
       state.activeBeers = beers.filter((beer) => beer.active);
       state.inactiveBeers = beers.filter((beer) => !beer.active);

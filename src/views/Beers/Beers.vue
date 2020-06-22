@@ -36,20 +36,13 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    async getData() {
-      const beersRequest = await this.$http.get('/beers');
-      const beers = beersRequest.data;
-      this.$store.commit('stopLoading');
-      this.$store.commit('setBeers', beers);
-    },
-  },
-  mounted() {
+  beforeMount() {
     this.$store.commit('startLoading');
-    this.getData();
+    this.$store.commit('requestBeers');
   },
   computed: {
     activeBeers() {
+      this.$store.commit('stopLoading');
       return this.$store.getters.getActiveBeers;
     },
     inactiveBeers() {
