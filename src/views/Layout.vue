@@ -37,7 +37,9 @@ export default {
 }
 
 .view {
-  padding: 50px 60px;
+  padding: 15px;
+  margin: 0 auto;
+  max-width: 1300px;
 }
 
 .view h1 .title {
@@ -50,10 +52,6 @@ export default {
   .views {
     margin-left: 0;
     margin-top: 25px;
-  }
-
-  .view {
-    padding: 40px;
   }
 }
 </style>

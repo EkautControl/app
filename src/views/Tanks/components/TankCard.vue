@@ -68,6 +68,7 @@ export default {
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(168, 168, 168, 0.25);
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .header {

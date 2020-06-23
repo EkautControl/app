@@ -20,6 +20,10 @@ ins {
   font-weight: normal;
 }
 
+.horizontal-divider {
+  border: 1px solid rgba(197, 197, 197, 0.7);
+}
+
 #app {
   font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -38,6 +42,34 @@ ins {
   font-weight: bold;
   color: #345087;
   background-color: white;
+  border: none;
+}
+
+.production-form .modal-card-head {
+  background-color: white;
+  padding: 50px 40px 0;
+}
+
+.production-form .modal-card-foot {
+  background-color: white;
+  padding: 0px 40px 30px;
+  justify-content: flex-end;
+}
+
+.production-form .modal-card-body {
+  padding: 40px;
+}
+
+.production-form .modal-card-title {
+  color: #475198;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+  font-size: 20px;
+}
+
+.production-form .modal-card-head,
+.production-form .modal-card-foot {
   border: none;
 }
 </style>
