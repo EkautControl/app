@@ -1,11 +1,6 @@
 <template>
   <section>
-    <b-sidebar
-      :fullheight="fullheight"
-      :overlay="isMobile"
-      :open.sync="showSidebar"
-      :can-cancel="['x']"
-    >
+    <b-sidebar :fullheight="fullheight" :open.sync="showSidebar" :can-cancel="['x']">
       <div>
         <div class="images">
           <img
@@ -50,7 +45,6 @@
 export default {
   data() {
     return {
-      isMobile: window.innerWidth < 425 ?? true,
       isTablet: window.innerWidth < 1024 ?? true,
       fullheight: true,
     };
@@ -77,6 +71,7 @@ export default {
 <style>
 .b-sidebar .sidebar-content.is-fullheight {
   background-color: #345087;
+  z-index: 30;
 }
 
 .b-sidebar .logo {

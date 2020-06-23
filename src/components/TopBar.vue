@@ -8,8 +8,13 @@
     :fixed-top="true"
   >
     <template slot="end">
-      <b-navbar-item v-if="!isTablet" class="btn-margin">
-        <Button text="Reportar problema" bgColor="E47E00" icon="alert-white.svg" />
+      <b-navbar-item class="btn-margin">
+        <Button
+          text="Reportar problema"
+          bg-color="E47E00"
+          icon="alert-white.svg"
+          custom-class="problem-btn"
+        />
       </b-navbar-item>
       <b-navbar-item class="menu-icon" v-if="isTablet">
         <img src="@/assets/burger.svg" alt="Menu" @click="toggleSideBar" />
@@ -19,10 +24,15 @@
         <div class="notification-count">2</div>
       </b-navbar-item>
       <b-navbar-item href="#">
-        <b-dropdown aria-role="list" :mobile-modal="false">
+        <b-dropdown
+          aria-role="list"
+          :mobile-modal="false"
+          :append-to-body="true"
+          class="logout-btn"
+        >
           <div class="user-initials" slot="trigger">EL</div>
-          <b-dropdown-item aria-role="listitem" @click="logOut" :custom="true">
-            Sair
+          <b-dropdown-item aria-role="listitem" @click="logOut">
+            <span>Sair</span>
           </b-dropdown-item>
         </b-dropdown>
       </b-navbar-item>
@@ -57,6 +67,7 @@ export default {
 .top-nav {
   background-color: white;
   box-shadow: 0px 4px 5px rgba(12, 17, 60, 0.15);
+  min-width: 320px;
 }
 
 .btn-margin {
@@ -98,11 +109,25 @@ export default {
   justify-content: center;
   font-weight: bold;
   font-size: 18px;
-  margin: auto 20px;
+  margin: auto 10px;
 }
 
-.dropdown-content {
-  width: 80px;
+.logout-btn .dropdown-content {
+  width: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-margin {
+    margin: 0 10px;
+  }
+
+  .problem-btn .btn-icon {
+    margin: 10px;
+  }
+
+  .problem-btn .text {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -120,8 +145,7 @@ export default {
     justify-content: flex-end;
   }
 
-  .dropdown-content {
-    width: 80px;
+  .top-nav.dropdown-content {
     padding: 0;
   }
 }
