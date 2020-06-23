@@ -1,0 +1,178 @@
+<template>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Adicionar nova produção</p>
+    </header>
+    <section class="modal-card-body">
+      <div class="columns">
+        <div class="column is-half">
+          <b-field label="Cerveja">
+            <b-dropdown aria-role="list" v-model="selectedBeer" :append-to-body="true">
+              <button class="button" slot="trigger" slot-scope="{ active }">
+                <span>{{ selectedBeer.name || 'Selecione a cerveja' }}</span>
+                <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
+              </button>
+              <ul v-for="(beer, index) in beers" :key="index">
+                <li>
+                  <b-dropdown-item aria-role="listitem" :value="beer">{{
+                    beer.name
+                  }}</b-dropdown-item>
+                </li>
+              </ul>
+            </b-dropdown>
+          </b-field>
+        </div>
+
+        <div class="column is-half">
+          <div class="columns">
+            <div class="column">
+              <b-field label="Lote">
+                <b-input type="number" placeholder="--" v-model="batch"></b-input>
+              </b-field>
+            </div>
+            <div class="column">
+              <b-field label="Tanque">
+                <b-dropdown aria-role="list" v-model="selectedTank" :append-to-body="true">
+                  <button class="button" slot="trigger" slot-scope="{ active }">
+                    <span>{{ selectedTank.tank || '--' }}</span>
+                    <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
+                  </button>
+                  <ul v-for="(tank, index) in tanks" :key="index">
+                    <li>
+                      <b-dropdown-item aria-role="listitem" :value="tank">{{
+                        tank.tank
+                      }}</b-dropdown-item>
+                    </li>
+                  </ul>
+                </b-dropdown>
+              </b-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <b-field label="Fase">
+            <b-dropdown aria-role="list" v-model="selectedPhase" :append-to-body="true">
+              <button class="button" slot="trigger" slot-scope="{ active }">
+                <span>{{ selectedPhase.label || '--' }}</span>
+                <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
+              </button>
+              <ul v-for="(phase, index) in phases" :key="index">
+                <li>
+                  <b-dropdown-item aria-role="listitem" :value="phase">{{
+                    phase.label
+                  }}</b-dropdown-item>
+                </li>
+              </ul>
+            </b-dropdown>
+          </b-field>
+        </div>
+        <div class="column is-half">
+          <b-field label="Data">
+            <b-datepicker
+              icon="calendar-today"
+              trap-focus
+              :append-to-body="true"
+              :max-date="new Date()"
+              v-model="selectedDate"
+            />
+          </b-field>
+        </div>
+      </div>
+    </section>
+    <div class="modal-card-foot">
+      <button class="button cancel-button" type="button" @click="$parent.close()">Cancelar</button>
+      <button class="button submit-button" @click="addNewProduction">Adicionar</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import Phases from '@/enums/productionPhase';
+
+export default {
+  data() {
+    return {
+      selectedBeer: '',
+      selectedTank: 0,
+      selectedPhase: 0,
+      selectedDate: new Date(),
+      batch: 0,
+      phases: Phases,
+    };
+  },
+  computed: {
+    beers() {
+      this.$store.commit('stopLoading');
+      return this.$store.getters.getBeers;
+    },
+    tanks() {
+      this.$store.commit('stopLoading');
+      return this.$store.getters.getInactiveTanks;
+    },
+  },
+  methods: {
+    addNewProduction() {
+      try {
+        this.$store.commit('addProductionToTank', {
+          tank: this.selectedTank.tank,
+          beerId: this.selectedBeer._id,
+          batch: this.batch,
+          phase: this.selectedPhase.type,
+          date: this.selectedDate,
+        });
+        this.$parent.close();
+        this.$buefy.toast.open({
+          message: 'Nova produção adicionada!',
+          type: 'is-success',
+        });
+        this.$store.commit('startLoading');
+      } catch (err) {
+        this.$parent.close();
+        this.$buefy.toast.open({
+          message: 'Problemas ao adicionar! Tente novamente.',
+          type: 'is-danger',
+        });
+      }
+    },
+  },
+  beforeMount() {
+    this.$store.commit('startLoading');
+    this.$store.commit('requestBeers');
+    this.$store.commit('startLoading');
+    this.$store.commit('requestInactiveTanks');
+  },
+};
+</script>
+
+<style>
+.production-form .modal-card-head {
+  background-color: white;
+  padding: 50px 40px 0;
+}
+
+.production-form .modal-card-foot {
+  background-color: white;
+  padding: 0px 40px 30px;
+  justify-content: flex-end;
+}
+
+.production-form .modal-card-body {
+  padding: 40px;
+}
+
+.production-form .modal-card-title {
+  color: #475198;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+  font-size: 20px;
+}
+
+.production-form .modal-card-head,
+.production-form .modal-card-foot {
+  border: none;
+}
+</style>

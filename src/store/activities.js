@@ -1,3 +1,4 @@
+import axios from '@/services/axios';
 import Activities from '@/enums/activityType';
 
 export default {
@@ -10,8 +11,9 @@ export default {
     },
   },
   mutations: {
-    setActivities(state, activities) {
-      state.activities = activities.map((res) => ({
+    async requestActivities(state) {
+      const activitiesRequest = await axios.get('/activities');
+      state.activities = activitiesRequest.data.map((res) => ({
         type: Activities[res.type].label,
         description: res.description,
         creationDate: new Date(res.creationDate).toLocaleDateString('en-GB'),

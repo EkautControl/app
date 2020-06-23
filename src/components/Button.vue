@@ -1,7 +1,11 @@
 <template>
-  <button @click="handleClick" :style="`background-color: #${bgColor}`" :class="`${size}`">
+  <button
+    @click="handleClick"
+    :style="`background-color: #${bgColor}`"
+    :class="`${customClass} button ${size}`"
+  >
     <div class="text">{{ text }}</div>
-    <img v-if="icon" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon" />
+    <img v-if="icon" :src="require(`@/assets/${icon}`)" alt class="btn-icon" />
   </button>
 </template>
 
@@ -12,13 +16,14 @@ export default {
     size: { type: String, default: '' },
     text: { type: String, default: 'Novo botão' },
     bgColor: { type: String, default: '3396E1' },
+    customClass: { type: String, default: '' },
     handleClick: { type: Function, default: () => {} },
   },
 };
 </script>
 
 <style scoped>
-button {
+.button {
   border: none;
   color: white;
   padding: 0 15px;
