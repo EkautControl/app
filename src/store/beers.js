@@ -25,5 +25,15 @@ export default {
       state.activeBeers = beers.filter((beer) => beer.active);
       state.inactiveBeers = beers.filter((beer) => !beer.active);
     },
+    async addNewBeer(state, payload) {
+      const beer = await axios.post('/beer', {
+        name: payload.beerName,
+        averageTime: payload.averageTime,
+        brewery: payload.brewery,
+        type: payload.beerType,
+      });
+      state.beers.push(beer.data);
+      state.inactiveBeers.push(beer.data);
+    },
   },
 };
