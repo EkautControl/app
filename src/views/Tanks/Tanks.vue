@@ -1,17 +1,17 @@
 <template>
   <main>
     <PageHeader>
-      <Button text="Nova produção" icon="plus.svg" size="lg" />
+      <Button text="Nova produção" icon="plus.svg" size="lg" :handleClick="openForm" />
     </PageHeader>
     <Divider title="TANQUES EM ALERTA" />
     <CardList>
-      <li v-for="(tank, index) in tanksInAlert" :key="index">
+      <li v-for="tank in tanksInAlert" :key="tank._id">
         <TankCard :tank="tank" hasProblem />
       </li>
     </CardList>
     <Divider title="TANQUES EM USO" />
     <CardList>
-      <li v-for="(tank, index) in activeTanks" :key="index">
+      <li v-for="tank in activeTanks" :key="tank._id">
         <TankCard :tank="tank" />
       </li>
     </CardList>
@@ -24,6 +24,7 @@ import Divider from '../../components/Divider.vue';
 import Button from '../../components/Button.vue';
 import CardList from '../../components/CardList.vue';
 import TankCard from './components/TankCard.vue';
+import NewProductionForm from './components/NewProductionForm.vue';
 
 export default {
   components: {
@@ -34,6 +35,16 @@ export default {
     TankCard,
   },
   methods: {
+    openForm() {
+      this.$buefy.modal.open({
+        parent: this,
+        component: NewProductionForm,
+        hasModalCard: true,
+        customClass: 'production-form',
+        trapFocus: true,
+        canCancel: ['escape', 'outside'],
+        scroll: 'keep',
+      });
     },
   },
   beforeMount() {
