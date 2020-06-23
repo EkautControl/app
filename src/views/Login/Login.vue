@@ -92,26 +92,6 @@ export default {
   align-items: center;
 }
 
-.login-card {
-  display: flex;
-  min-height: 300px;
-  min-width: 250px;
-  height: 70vh;
-  width: 35%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  background-color: #345087;
-  border-radius: 26px;
-}
-
-.sign-in-form {
-  min-width: 220px;
-  width: 30%;
-  margin-bottom: 10px;
-}
-
 .label {
   color: white;
 }
@@ -119,6 +99,7 @@ export default {
 .sign-in-form.button {
   background-color: #3396E1;
   border-radius: 12px;
+  margin-bottom: 40px;
 }
 
 .sign-in-form.button:hover {
@@ -144,16 +125,79 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
-.ekaut {
-  width: 10%;
-  min-width: 80px;
-}
-
-.logo.control {
-  width: 20%;
+@media screen and (max-width: 768px) {
+  .sign-in-form {
   min-width: 150px;
+  width: 20%;
+  margin-bottom: 10px;
+  }
+
+  .login-screen {
+    height: 90vh;
+  }
+
+  .ekaut {
+    width: 10%;
+    min-width: 70px;
+  }
+
+  .logo.control {
+    width: 20%;
+    min-width: 120px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .sign-in-form {
+    min-width: 220px;
+    width: 30%;
+    margin-bottom: 10px;
+  }
+
+  .ekaut {
+    width: 10%;
+    min-width: 80px;
+  }
+
+  .logo.control {
+    width: 20%;
+    min-width: 150px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .login-card {
+  display: flex;
+  min-height: 340px;
+  min-width: 300px;
+  height: 70vh;
+  width: 35%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  background-color: #345087;
+  border-radius: 26px;
+  }
+
+  .ekaut {
+    width: 10%;
+    min-width: 100px;
+  }
+
+  .logo.control {
+    width: 20%;
+    min-width: 180px;
+  }
+
+  .sign-in-form {
+    min-width: 270px;
+    width: 30%;
+    margin-bottom: 10px;
+  }
 }
 </style>
