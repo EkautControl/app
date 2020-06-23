@@ -27,4 +27,17 @@ ins {
   color: #2c3e50;
   width: 100%;
 }
+
+.submit-button {
+  font-weight: bold;
+  background-color: #345087;
+  color: white;
+}
+
+.cancel-button {
+  font-weight: bold;
+  color: #345087;
+  background-color: white;
+  border: none;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" :style="`background-color: #${bgColor}`" :class="`${size}`">
+  <button @click="handleClick" :style="`background-color: #${bgColor}`" :class="`button ${size}`">
     <div class="text">{{ text }}</div>
     <img v-if="icon" :src="require(`@/assets/${icon}`)" alt="" class="btn-icon" />
   </button>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-button {
+.button {
   border: none;
   color: white;
   padding: 0 15px;
