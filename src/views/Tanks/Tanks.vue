@@ -40,7 +40,7 @@ export default {
         parent: this,
         component: NewProductionForm,
         hasModalCard: true,
-        customClass: 'production-form',
+        customClass: 'submission-form',
         trapFocus: true,
         canCancel: ['escape', 'outside'],
         scroll: 'keep',

@@ -101,33 +101,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.beer-form .modal-card-head {
-  background-color: white;
-  padding: 50px 40px 0;
-}
-
-.beer-form .modal-card-foot {
-  background-color: white;
-  padding: 0px 40px 30px;
-  justify-content: flex-end;
-}
-
-.beer-form .modal-card-body {
-  padding: 40px;
-}
-
-.beer-form .modal-card-title {
-  color: #475198;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-align: left;
-  font-size: 20px;
-}
-
-.beer-form .modal-card-head,
-.beer-form .modal-card-foot {
-  border: none;
-}
-</style>

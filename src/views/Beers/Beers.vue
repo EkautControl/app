@@ -54,7 +54,7 @@ export default {
         parent: this,
         component: NewBeerForm,
         hasModalCard: true,
-        customClass: 'beer-form',
+        customClass: 'submission-form',
         trapFocus: true,
         canCancel: ['escape', 'outside'],
         scroll: 'keep',
