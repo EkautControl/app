@@ -56,7 +56,7 @@
     </section>
     <div class="modal-card-foot">
       <button class="button cancel-button" type="button" @click="$parent.close()">Cancelar</button>
-      <button class="button submit-button" type="submit" @click="addNewbeer">Adicionar</button>
+      <button class="button submit-button" type="submit" @click="addNewBeer">Adicionar</button>
     </div>
   </div>
 </template>
@@ -76,7 +76,7 @@ export default {
   },
   computed: {},
   methods: {
-    async addNewbeer() {
+    async addNewBeer() {
       try {
         await this.$store.commit('addNewBeer', {
           beerName: this.beerName,

@@ -96,10 +96,10 @@ export default {
 }
 
 .card-divider {
-  width: 60%;
+  width: 80%;
   margin: auto;
   border: 1px solid rgba(0, 0, 0, 0.44);
-  opacity: 20%;
+  opacity: 45%;
 }
 
 .description {

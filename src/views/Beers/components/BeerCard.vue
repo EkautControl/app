@@ -8,7 +8,7 @@
         Tempo médio de produção:
         <ins>{{ beer.averageTime }}</ins
         ><br />
-        Cervejaria
+        Cervejaria:
         <ins>{{ beer.brewery }}</ins>
       </p>
     </div>
