@@ -1,6 +1,6 @@
-import express from 'express';
-import serveStatic from 'serve-static';
-import { join } from 'path';
+const express = require('express');
+const serveStatic = require('serve-static');
+const { join } = require('path');
 
 const app = express();
 app.use(serveStatic(join(__dirname, 'dist')));
