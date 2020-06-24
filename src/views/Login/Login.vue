@@ -15,6 +15,8 @@
         <b-input type="email"
           custom-class="sign-in-input"
           v-model="email"
+          @focus="handleFocus"
+          @blur="handleBlur"
           @keyup.enter.native="handleLogin">
         </b-input>
       </b-field>
@@ -27,6 +29,8 @@
         <b-input type="password"
           v-model="password"
           custom-class="sign-in-input"
+          @focus="handleFocus"
+          @blur="handleBlur"
           @keyup.enter.native="handleLogin"
           password-reveal>
         </b-input>
@@ -81,6 +85,20 @@ export default {
         this.invalid = 'Email ou senha inválidos';
       }
     },
+
+    handleFocus(event) {
+      const labelElement = event.srcElement.parentNode.previousSibling.previousSibling;
+      labelElement.style.transform = 'translateY(3px)';
+    },
+
+    handleBlur(event) {
+      const callerField = event.srcElement.type;
+
+      if (!this[callerField]) {
+        const labelElement = event.srcElement.parentNode.previousSibling.previousSibling;
+        labelElement.style.transform = 'translateY(23px)';
+      }
+    },
   },
 };
 </script>
@@ -127,6 +145,18 @@ export default {
   justify-content: space-between;
   margin-bottom: 20px;
   margin-top: 30px;
+}
+
+.sign-in-form.fields {
+  /* padding-top: 10px; */
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  order: -1;
+  transition: all 0.2s ease-in;
+  transform: translateY(23px);
+  pointer-events: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -182,6 +212,8 @@ export default {
   margin: auto;
   background-color: #345087;
   border-radius: 26px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   }
 
   .ekaut {
