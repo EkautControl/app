@@ -3,37 +3,41 @@ import axios from '@/services/axios';
 export default {
   state: () => ({
     beers: [],
-    activeBeers: [],
-    inactiveBeers: [],
   }),
   getters: {
     getBeers(state) {
       return state.beers;
     },
     getActiveBeers(state) {
-      return state.activeBeers;
+      return state.beers.filter((beer) => beer.active);
     },
     getInactiveBeers(state) {
-      return state.inactiveBeers;
+      return state.beers.filter((beer) => !beer.active);
     },
   },
-  mutations: {
-    async requestBeers(state) {
+  actions: {
+    async requestBeers({ commit }) {
       const beersRequest = await axios.get('/beers');
       const beers = beersRequest.data;
-      state.beers = beers;
-      state.activeBeers = beers.filter((beer) => beer.active);
-      state.inactiveBeers = beers.filter((beer) => !beer.active);
+
+      commit('updateBeers', beers);
     },
-    async addNewBeer(state, payload) {
+    async addNewBeer({ commit }, payload) {
       const beer = await axios.post('/beer', {
         name: payload.beerName,
         averageTime: payload.averageTime,
         brewery: payload.brewery,
         type: payload.beerType,
       });
-      state.beers.push(beer.data);
-      state.inactiveBeers.push(beer.data);
+      commit('addBeer', beer.data);
+    },
+  },
+  mutations: {
+    updateBeers(state, beers) {
+      state.beers = beers;
+    },
+    addBeer(state, beer) {
+      state.beers.push(beer);
     },
   },
 };

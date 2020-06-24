@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     toggleSideBar() {
-      this.$store.commit('toggleSideBar');
+      this.$store.dispatch('toggleSideBar');
     },
     handleRoute(routeName) {
       if (this.$route.name !== routeName) this.$router.push({ name: routeName }).catch(() => {});

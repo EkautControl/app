@@ -105,18 +105,16 @@ export default {
   },
   computed: {
     beers() {
-      this.$store.commit('stopLoading');
       return this.$store.getters.getBeers;
     },
     tanks() {
-      this.$store.commit('stopLoading');
       return this.$store.getters.getInactiveTanks;
     },
   },
   methods: {
     addNewProduction() {
       try {
-        this.$store.commit('addProductionToTank', {
+        this.$store.dispatch('addProductionToTank', {
           tank: this.selectedTank.tank,
           beerId: this.selectedBeer._id,
           batch: this.batch,
@@ -128,7 +126,6 @@ export default {
           message: 'Nova produção adicionada!',
           type: 'is-success',
         });
-        this.$store.commit('startLoading');
       } catch (err) {
         this.$parent.close();
         this.$buefy.toast.open({
@@ -139,10 +136,8 @@ export default {
     },
   },
   beforeMount() {
-    this.$store.commit('startLoading');
-    this.$store.commit('requestBeers');
-    this.$store.commit('startLoading');
-    this.$store.commit('requestInactiveTanks');
+    this.$store.dispatch('requestBeers');
+    this.$store.dispatch('requestInactiveTanks');
   },
 };
 </script>

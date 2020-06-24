@@ -20,16 +20,16 @@ export default {
       return state.inactiveTanks.sort((a, b) => a.tank - b.tank);
     },
   },
-  mutations: {
-    async requestActiveTanks(state) {
+  actions: {
+    async requestActiveTanks({ commit }) {
       const tanks = await axios.get('/activeTanks');
-      state.activeTanks = tanks.data;
+      commit('updateActiveTanks', tanks.data);
     },
-    async requestInactiveTanks(state) {
+    async requestInactiveTanks({ commit }) {
       const tanks = await axios.get('/inactiveTanks');
-      state.inactiveTanks = tanks.data;
+      commit('updateInactiveTanks', tanks.data);
     },
-    async addProductionToTank(state, payload) {
+    async addProductionToTank({ commit }, payload) {
       const newProd = await axios.post('/production', {
         tank: payload.tank,
         beerId: payload.beerId,
@@ -37,7 +37,18 @@ export default {
         phase: payload.phase,
         date: payload.date,
       });
-      state.activeTanks.push(newProd.data);
+      commit('addActiveTank', newProd.data);
+    },
+  },
+  mutations: {
+    updateActiveTanks(state, tank) {
+      state.activeTanks = tank;
+    },
+    updateInactiveTanks(state, tank) {
+      state.inactiveTanks = tank;
+    },
+    addActiveTank(state, tank) {
+      state.activeTanks.push(tank);
     },
   },
 };

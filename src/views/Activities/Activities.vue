@@ -15,8 +15,7 @@ export default {
     Table,
   },
   beforeMount() {
-    this.$store.commit('stopLoading');
-    this.$store.commit('requestActivities');
+    this.$store.dispatch('requestActivities');
   },
 };
 </script>

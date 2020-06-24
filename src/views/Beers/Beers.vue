@@ -35,16 +35,13 @@ export default {
     BeerCard,
   },
   beforeMount() {
-    this.$store.commit('startLoading');
-    this.$store.commit('requestBeers');
+    this.$store.dispatch('requestBeers');
   },
   computed: {
     activeBeers() {
-      this.$store.commit('stopLoading');
       return this.$store.getters.getActiveBeers;
     },
     inactiveBeers() {
-      this.$store.commit('stopLoading');
       return this.$store.getters.getInactiveBeers;
     },
   },

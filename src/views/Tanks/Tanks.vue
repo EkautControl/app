@@ -48,12 +48,10 @@ export default {
     },
   },
   beforeMount() {
-    this.$store.commit('startLoading');
-    this.$store.commit('requestActiveTanks');
+    this.$store.dispatch('requestActiveTanks');
   },
   computed: {
     activeTanks() {
-      this.$store.commit('stopLoading');
       return this.$store.getters.getActiveTanks;
     },
     tanksInAlert() {

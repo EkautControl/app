@@ -78,7 +78,7 @@ export default {
   methods: {
     async addNewBeer() {
       try {
-        await this.$store.commit('addNewBeer', {
+        await this.$store.dispatch('addNewBeer', {
           beerName: this.beerName,
           beerType: this.beerType.type,
           brewery: this.brewery,
@@ -89,7 +89,6 @@ export default {
           message: 'Nova cerveja adicionada!',
           type: 'is-success',
         });
-        this.$store.commit('startLoading');
       } catch (err) {
         this.$parent.close();
         this.$buefy.toast.open({
