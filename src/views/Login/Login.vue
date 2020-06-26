@@ -117,6 +117,7 @@ export default {
 .sign-in-form.button {
   background-color: #3396E1;
   border-radius: 12px;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 
@@ -143,12 +144,11 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   margin-top: 30px;
 }
 
 .sign-in-form.fields {
-  /* padding-top: 10px; */
   display: flex;
   flex-direction: column;
 }
@@ -223,6 +223,7 @@ export default {
 
   .logo.control {
     width: 20%;
+    margin-top: 10px;
     min-width: 180px;
   }
 
