@@ -10,15 +10,21 @@ export default {
       return state.activities;
     },
   },
-  mutations: {
-    async requestActivities(state) {
+  actions: {
+    async requestActivities({ commit }) {
       const activitiesRequest = await axios.get('/activities');
-      state.activities = activitiesRequest.data.map((res) => ({
+      const activities = activitiesRequest.data.map((res) => ({
         type: Activities[res.type].label,
         description: res.description,
         creationDate: new Date(res.creationDate).toLocaleDateString('en-GB'),
         reporter: res.reporter,
       }));
+      commit('updateActivities', activities);
+    },
+  },
+  mutations: {
+    updateActivities(state, activities) {
+      state.activities = activities;
     },
   },
 };

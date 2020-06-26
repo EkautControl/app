@@ -14,9 +14,9 @@
               </button>
               <ul v-for="(beer, index) in beers" :key="index">
                 <li>
-                  <b-dropdown-item aria-role="listitem" :value="beer">{{
-                    beer.name
-                  }}</b-dropdown-item>
+                  <b-dropdown-item aria-role="listitem" :value="beer">
+                    {{ beer.name }}
+                  </b-dropdown-item>
                 </li>
               </ul>
             </b-dropdown>
@@ -37,11 +37,11 @@
                     <span>{{ selectedTank.tank || '--' }}</span>
                     <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
                   </button>
-                  <ul v-for="(tank, index) in tanks" :key="index">
+                  <ul v-for="tank in tanks" :key="tank._id">
                     <li>
-                      <b-dropdown-item aria-role="listitem" :value="tank">{{
-                        tank.tank
-                      }}</b-dropdown-item>
+                      <b-dropdown-item aria-role="listitem" :value="tank">
+                        {{ tank.tank }}
+                      </b-dropdown-item>
                     </li>
                   </ul>
                 </b-dropdown>
@@ -105,18 +105,17 @@ export default {
   },
   computed: {
     beers() {
-      this.$store.commit('stopLoading');
+      this.$store.dispatch('stopLoading');
       return this.$store.getters.getBeers;
     },
     tanks() {
-      this.$store.commit('stopLoading');
       return this.$store.getters.getInactiveTanks;
     },
   },
   methods: {
     addNewProduction() {
       try {
-        this.$store.commit('addProductionToTank', {
+        this.$store.dispatch('addProductionToTank', {
           tank: this.selectedTank.tank,
           beerId: this.selectedBeer._id,
           batch: this.batch,
@@ -128,7 +127,6 @@ export default {
           message: 'Nova produção adicionada!',
           type: 'is-success',
         });
-        this.$store.commit('startLoading');
       } catch (err) {
         this.$parent.close();
         this.$buefy.toast.open({
@@ -138,41 +136,10 @@ export default {
       }
     },
   },
-  beforeMount() {
-    this.$store.commit('startLoading');
-    this.$store.commit('requestBeers');
-    this.$store.commit('startLoading');
-    this.$store.commit('requestInactiveTanks');
+  mounted() {
+    this.$store.dispatch('startLoading');
+    this.$store.dispatch('requestBeers');
+    this.$store.dispatch('requestInactiveTanks');
   },
 };
 </script>
-
-<style>
-.production-form .modal-card-head {
-  background-color: white;
-  padding: 50px 40px 0;
-}
-
-.production-form .modal-card-foot {
-  background-color: white;
-  padding: 0px 40px 30px;
-  justify-content: flex-end;
-}
-
-.production-form .modal-card-body {
-  padding: 40px;
-}
-
-.production-form .modal-card-title {
-  color: #475198;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-align: left;
-  font-size: 20px;
-}
-
-.production-form .modal-card-head,
-.production-form .modal-card-foot {
-  border: none;
-}
-</style>

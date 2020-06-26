@@ -57,7 +57,7 @@ export default {
       console.log('LogOut');
     },
     toggleSideBar() {
-      this.$store.commit('toggleSideBar');
+      this.$store.dispatch('toggleSideBar');
     },
   },
 };

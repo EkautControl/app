@@ -40,20 +40,20 @@ export default {
         parent: this,
         component: NewProductionForm,
         hasModalCard: true,
-        customClass: 'production-form',
+        customClass: 'submission-form',
         trapFocus: true,
         canCancel: ['escape', 'outside'],
         scroll: 'keep',
       });
     },
   },
-  beforeMount() {
-    this.$store.commit('startLoading');
-    this.$store.commit('requestActiveTanks');
+  mounted() {
+    this.$store.dispatch('startLoading');
+    this.$store.dispatch('requestActiveTanks');
   },
   computed: {
     activeTanks() {
-      this.$store.commit('stopLoading');
+      this.$store.dispatch('stopLoading');
       return this.$store.getters.getActiveTanks;
     },
     tanksInAlert() {

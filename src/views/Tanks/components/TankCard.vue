@@ -98,8 +98,7 @@ export default {
 .card-divider {
   width: 80%;
   margin: auto;
-  border: 1px solid rgba(0, 0, 0, 0.44);
-  opacity: 45%;
+  border: 1px solid rgba(0, 0, 0, 0.068);
 }
 
 .description {

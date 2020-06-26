@@ -34,17 +34,16 @@ export default {
     CardList,
     BeerCard,
   },
-  beforeMount() {
-    this.$store.commit('startLoading');
-    this.$store.commit('requestBeers');
+  mounted() {
+    this.$store.dispatch('startLoading');
+    this.$store.dispatch('requestBeers');
   },
   computed: {
     activeBeers() {
-      this.$store.commit('stopLoading');
+      this.$store.dispatch('stopLoading');
       return this.$store.getters.getActiveBeers;
     },
     inactiveBeers() {
-      this.$store.commit('stopLoading');
       return this.$store.getters.getInactiveBeers;
     },
   },
@@ -54,7 +53,7 @@ export default {
         parent: this,
         component: NewBeerForm,
         hasModalCard: true,
-        customClass: 'beer-form',
+        customClass: 'submission-form',
         trapFocus: true,
         canCancel: ['escape', 'outside'],
         scroll: 'keep',

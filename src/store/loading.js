@@ -1,8 +1,16 @@
 export default {
-  state: () => ({ loading: true }),
+  state: () => ({ loading: false }),
   getters: {
     isLoading(state) {
       return state.loading;
+    },
+  },
+  actions: {
+    startLoading({ commit }) {
+      commit('startLoading');
+    },
+    stopLoading({ commit }) {
+      commit('stopLoading');
     },
   },
   mutations: {
