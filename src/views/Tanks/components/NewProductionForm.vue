@@ -14,9 +14,9 @@
               </button>
               <ul v-for="(beer, index) in beers" :key="index">
                 <li>
-                  <b-dropdown-item aria-role="listitem" :value="beer">{{
-                    beer.name
-                  }}</b-dropdown-item>
+                  <b-dropdown-item aria-role="listitem" :value="beer">
+                    {{ beer.name }}
+                  </b-dropdown-item>
                 </li>
               </ul>
             </b-dropdown>
@@ -37,11 +37,11 @@
                     <span>{{ selectedTank.tank || '--' }}</span>
                     <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
                   </button>
-                  <ul v-for="(tank, index) in tanks" :key="index">
+                  <ul v-for="tank in tanks" :key="tank._id">
                     <li>
-                      <b-dropdown-item aria-role="listitem" :value="tank">{{
-                        tank.tank
-                      }}</b-dropdown-item>
+                      <b-dropdown-item aria-role="listitem" :value="tank">
+                        {{ tank.tank }}
+                      </b-dropdown-item>
                     </li>
                   </ul>
                 </b-dropdown>
@@ -105,6 +105,7 @@ export default {
   },
   computed: {
     beers() {
+      this.$store.dispatch('stopLoading');
       return this.$store.getters.getBeers;
     },
     tanks() {
@@ -135,7 +136,8 @@ export default {
       }
     },
   },
-  beforeMount() {
+  mounted() {
+    this.$store.dispatch('startLoading');
     this.$store.dispatch('requestBeers');
     this.$store.dispatch('requestInactiveTanks');
   },

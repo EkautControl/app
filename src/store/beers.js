@@ -19,7 +19,6 @@ export default {
     async requestBeers({ commit }) {
       const beersRequest = await axios.get('/beers');
       const beers = beersRequest.data;
-
       commit('updateBeers', beers);
     },
     async addNewBeer({ commit }, payload) {

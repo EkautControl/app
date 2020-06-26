@@ -47,11 +47,13 @@ export default {
       });
     },
   },
-  beforeMount() {
+  mounted() {
+    this.$store.dispatch('startLoading');
     this.$store.dispatch('requestActiveTanks');
   },
   computed: {
     activeTanks() {
+      this.$store.dispatch('stopLoading');
       return this.$store.getters.getActiveTanks;
     },
     tanksInAlert() {

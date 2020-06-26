@@ -74,7 +74,6 @@ export default {
       beerTypes: BeerTypes,
     };
   },
-  computed: {},
   methods: {
     async addNewBeer() {
       try {

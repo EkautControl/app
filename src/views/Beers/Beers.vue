@@ -34,11 +34,13 @@ export default {
     CardList,
     BeerCard,
   },
-  beforeMount() {
+  mounted() {
+    this.$store.dispatch('startLoading');
     this.$store.dispatch('requestBeers');
   },
   computed: {
     activeBeers() {
+      this.$store.dispatch('stopLoading');
       return this.$store.getters.getActiveBeers;
     },
     inactiveBeers() {
