@@ -2,14 +2,21 @@ import Tanks from '../views/Tanks/Tanks.vue';
 import Activities from '../views/Activities/Activities.vue';
 import Beers from '../views/Beers/Beers.vue';
 import Layout from '../views/Layout.vue';
+import Login from '../views/Login/Login.vue';
 
 const routes = [
-  { path: '/entrar', name: 'Login', meta: { title: 'Login' } },
+  {
+    path: '/entrar',
+    component: Login,
+    name: 'Login',
+    meta: { title: 'Login' },
+  },
   {
     path: '/',
     component: Layout,
     redirect: '/tanques',
     name: 'Main',
+    meta: { requiresAuth: true },
     children: [
       {
         path: 'tanques',

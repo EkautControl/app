@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import moduleSideBar from './sideBar';
 import moduleLoading from './loading';
 import moduleTanks from './tanks';
+import moduleUser from './user';
 import moduleBeers from './beers';
 import moduleActivities from './activities';
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     sidebar: moduleSideBar,
     loading: moduleLoading,
     tanks: moduleTanks,
+    user: moduleUser,
     beers: moduleBeers,
     activities: moduleActivities,
   },
