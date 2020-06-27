@@ -28,7 +28,7 @@
       </b-navbar-item>
       <b-navbar-item href="#">
         <b-dropdown aria-role="list" :mobile-modal="false">
-          <div class="user-initials" slot="trigger">EL</div>
+          <div class="user-initials" slot="trigger">{{ userInitials }}</div>
           <b-dropdown-item aria-role="listitem" @click="handleLogout">
             Sair
           </b-dropdown-item>
@@ -58,6 +58,11 @@ export default {
     },
     toggleSideBar() {
       this.$store.commit('toggleSideBar');
+    },
+  },
+  computed: {
+    userInitials() {
+      return this.$store.getters.getInitials;
     },
   },
 };
