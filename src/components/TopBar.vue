@@ -8,22 +8,19 @@
     :fixed-top="true"
   >
     <template slot="end">
-      <b-navbar-item v-if="!isTablet" class="btn-margin">
+      <b-navbar-item class="btn-margin">
         <Button
           text="Reportar problema"
-          bgColor="E47E00"
+          bg-color="E47E00"
           icon="alert-white.svg"
+          custom-class="problem-btn"
         />
       </b-navbar-item>
       <b-navbar-item class="menu-icon" v-if="isTablet">
-        <img
-            src="@/assets/burger.svg"
-            alt="Menu"
-            @click="toggleSideBar"
-          />
+        <img src="@/assets/burger.svg" alt="Menu" @click="toggleSideBar" />
       </b-navbar-item>
       <b-navbar-item>
-        <img src="@/assets/notification.svg" alt="Notification" class="notification-icon">
+        <img src="@/assets/notification.svg" alt="Notification" class="notification-icon" />
         <div class="notification-count">2</div>
       </b-navbar-item>
       <b-navbar-item href="#">
@@ -33,7 +30,7 @@
             Sair
           </b-dropdown-item>
         </b-dropdown>
-    </b-navbar-item>
+      </b-navbar-item>
     </template>
   </b-navbar>
 </template>
@@ -48,7 +45,7 @@ export default {
   },
   data() {
     return {
-      isTablet: (window.innerWidth < 1024),
+      isTablet: window.innerWidth < 1024,
     };
   },
   methods: {
@@ -57,7 +54,7 @@ export default {
       this.$router.push({ name: 'Login' });
     },
     toggleSideBar() {
-      this.$store.commit('toggleSideBar');
+      this.$store.dispatch('toggleSideBar');
     },
   },
   computed: {
@@ -72,30 +69,35 @@ export default {
 .top-nav {
   background-color: white;
   box-shadow: 0px 4px 5px rgba(12, 17, 60, 0.15);
+  min-width: 320px;
 }
 
-.btn-margin { margin-right: 25px; }
+.btn-margin {
+  margin-right: 25px;
+}
 
 .navbar-item {
   display: flex;
   align-self: center;
 }
 
-.notification-icon { position: relative; }
+.notification-icon {
+  position: relative;
+}
 
 .notification-count {
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: 3px;
-    right: 8px;
-    z-index: 999;
-    border-radius: 50%;
-    background-color: #E47E00;
-    font-size: 10px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  z-index: 999;
+  border-radius: 50%;
+  background-color: #e47e00;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
 }
 
 .user-initials {
@@ -109,15 +111,31 @@ export default {
   justify-content: center;
   font-weight: bold;
   font-size: 18px;
-  margin: auto 20px;
+  margin: auto 10px;
 }
 
-.dropdown-content {
-  width: 80px;
+.logout-btn .dropdown-content {
+  width: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-margin {
+    margin: 0 10px;
+  }
+
+  .problem-btn .btn-icon {
+    margin: 10px;
+  }
+
+  .problem-btn .text {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-  .navbar-brand { display: none; }
+  .navbar-brand {
+    display: none;
+  }
 
   .menu-icon {
     left: 15px;
@@ -129,8 +147,7 @@ export default {
     justify-content: flex-end;
   }
 
-  .dropdown-content {
-    width: 80px;
+  .top-nav.dropdown-content {
     padding: 0;
   }
 }

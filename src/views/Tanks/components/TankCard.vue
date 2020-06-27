@@ -1,17 +1,17 @@
 <template>
-  <div class="column is-4-desktop is-3-widescreen">
+  <div class="column is-4-desktop is-3-widescreen is-3-mobile">
     <div class="card">
       <div class="header">
-        <p class="header-value">{{ tank.tank }}</p>
+        <p class="header-value">{{ tankNumber }}</p>
         <div class="title-box">
           <p class="subtitle">{{ tank.beer.brewery }} | LOTE {{ tank.production.batch }}</p>
-          <p class="title">American IPA</p>
+          <p class="title">{{ tank.beer.name }}</p>
         </div>
       </div>
       <hr class="card-divider" />
       <p class="description">
-        Previsão de término:
-        <ins>{{ remainingTime }}</ins>
+        Término previsto:
+        <ins>{{ endDateExpected }}</ins>
       </p>
       <div class="footer" :style="`background-color: #${phaseColor}`">
         <p class="phase-title">{{ phaseTitle }}</p>
@@ -22,12 +22,13 @@
 </template>
 
 <script>
-import Phases from '../enums/productionPhase';
+import Phases from '@/enums/productionPhase';
 
 export default {
   data() {
     return {
-      remainingTime: null,
+      tankNumber: 0,
+      endDateExpected: '',
       phaseTitle: '',
       phaseColor: '',
     };
@@ -38,10 +39,15 @@ export default {
   },
   methods: {
     setUpTanksDigits() {
-      this.tank.tank = this.tank.tank.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+      this.tankNumber = this.tank.tank.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false,
+      });
     },
     setUpRemainingTime() {
-      this.remainingTime = new Date(this.tank.production.startDate).toLocaleDateString('en-GB');
+      const date = new Date(this.tank.production.startDate);
+      date.setDate(date.getDate() + this.tank.beer.averageTime);
+      this.endDateExpected = date.toLocaleDateString('en-GB');
     },
     setUpPhase() {
       this.phaseTitle = Phases[this.tank.production.phase].label;
@@ -65,7 +71,7 @@ export default {
 }
 
 .header {
-  padding-left: 12px;
+  padding-left: 15px;
   display: flex;
   align-items: center;
 }
@@ -86,14 +92,13 @@ export default {
   font-weight: normal;
   font-size: 11px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .card-divider {
-  width: 60%;
+  width: 80%;
   margin: auto;
-  border: 1px solid rgba(0, 0, 0, 0.44);
-  opacity: 20%;
+  border: 1px solid rgba(0, 0, 0, 0.068);
 }
 
 .description {
@@ -127,10 +132,8 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .header { padding-left: 25px; }
-}
-
-@media screen and (max-width: 1024px) {
-  /* .card { min-width: 240px; } */
+  .header {
+    padding-left: 25px;
+  }
 }
 </style>

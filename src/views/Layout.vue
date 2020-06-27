@@ -1,12 +1,13 @@
 <template>
   <main>
     <div>
-      <Sidebar/>
+      <Sidebar />
     </div>
     <div>
-      <TopBar/>
+      <TopBar />
       <div class="views">
-        <router-view class="view"/>
+        <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="false" />
+        <router-view class="view" />
       </div>
     </div>
   </main>
@@ -21,6 +22,11 @@ export default {
     Sidebar,
     TopBar,
   },
+  computed: {
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
+  },
 };
 </script>
 
@@ -30,7 +36,9 @@ export default {
   margin-top: 10px;
 }
 
-.view { padding: 50px 60px; }
+.view {
+  padding: 50px 60px;
+}
 
 .view h1 .title {
   font-size: 32px;
@@ -44,6 +52,8 @@ export default {
     margin-top: 25px;
   }
 
-  .view { padding: 50px; }
+  .view {
+    padding: 40px;
+  }
 }
 </style>

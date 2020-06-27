@@ -1,17 +1,14 @@
 <template>
   <section>
-    <b-sidebar
-      :fullheight="fullheight"
-      :overlay="isMobile"
-      :open.sync="showSidebar"
-      :can-cancel="['x']"
-    >
+    <b-sidebar :fullheight="fullheight" :open.sync="showSidebar" :can-cancel="['x']">
       <div>
         <div class="images">
-          <img src="@/assets/logo.svg"
+          <img
+            src="@/assets/logo.svg"
             alt="Ekaut Control"
             class="logo"
-            @click="handleRoute('Tanks')"/>
+            @click="handleRoute('Tanks')"
+          />
           <img
             v-if="isTablet"
             src="@/assets/burger-white.svg"
@@ -48,8 +45,7 @@
 export default {
   data() {
     return {
-      isMobile: ((window.innerWidth < 425) ?? true),
-      isTablet: ((window.innerWidth < 1024) ?? true),
+      isTablet: window.innerWidth < 1024 ?? true,
       fullheight: true,
     };
   },
@@ -60,13 +56,13 @@ export default {
   },
   methods: {
     toggleSideBar() {
-      this.$store.commit('toggleSideBar');
+      this.$store.dispatch('toggleSideBar');
     },
     handleRoute(routeName) {
       if (this.$route.name !== routeName) this.$router.push({ name: routeName }).catch(() => {});
     },
     handleActiveItem(routeName) {
-      return (this.$route.name === routeName);
+      return this.$route.name === routeName;
     },
   },
 };
@@ -75,6 +71,7 @@ export default {
 <style>
 .b-sidebar .sidebar-content.is-fullheight {
   background-color: #345087;
+  z-index: 30;
 }
 
 .b-sidebar .logo {
@@ -98,7 +95,7 @@ export default {
 }
 
 .menu-list a.is-active {
-  border-left: 3px #E47E00 solid;
+  border-left: 3px #e47e00 solid;
 }
 
 .menu-list a:hover {

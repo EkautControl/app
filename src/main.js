@@ -5,7 +5,6 @@ import { Amplify } from 'aws-amplify';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import axios from './services/axios';
 import amplifyConfig from './services/amplify';
 
 Vue.config.productionTip = false;
@@ -19,7 +18,7 @@ Amplify.configure({
   },
 });
 
-Vue.prototype.$http = axios;
+Vue.config.productionTip = false;
 
 Vue.use(Buefy);
 
