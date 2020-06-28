@@ -14,6 +14,7 @@
           bg-color="E47E00"
           icon="alert-white.svg"
           custom-class="problem-btn"
+          :handleClick="openForm"
         />
       </b-navbar-item>
       <b-navbar-item class="menu-icon" v-if="isTablet">
@@ -38,6 +39,7 @@
 <script>
 import { Auth } from 'aws-amplify';
 import Button from './Button.vue';
+import ReportProblemForm from './ReportProblemForm.vue';
 
 export default {
   components: {
@@ -56,6 +58,17 @@ export default {
     },
     toggleSideBar() {
       this.$store.dispatch('toggleSideBar');
+    },
+    openForm() {
+      this.$buefy.modal.open({
+        parent: this,
+        component: ReportProblemForm,
+        hasModalCard: true,
+        customClass: 'problem-form',
+        trapFocus: true,
+        canCancel: ['escape', 'outside'],
+        scroll: 'keep',
+      });
     },
   },
   computed: {

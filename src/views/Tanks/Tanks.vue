@@ -4,13 +4,13 @@
       <Button text="Nova produção" icon="plus.svg" size="lg" :handleClick="openForm" />
     </PageHeader>
     <Divider title="TANQUES EM ALERTA" />
-    <CardList>
+    <CardList :empty="tanksInAlert.length === 0">
       <li v-for="tank in tanksInAlert" :key="tank._id">
         <TankCard :tank="tank" hasProblem />
       </li>
     </CardList>
     <Divider title="TANQUES EM USO" />
-    <CardList>
+    <CardList :empty="activeTanks.length === 0">
       <li v-for="tank in activeTanks" :key="tank._id">
         <TankCard :tank="tank" />
       </li>
