@@ -51,6 +51,7 @@ export default {
   methods: {
     async handleLogout() {
       await Auth.signOut();
+      localStorage.removeItem('user');
       this.$router.push({ name: 'Login' });
     },
     toggleSideBar() {

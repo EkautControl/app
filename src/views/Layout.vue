@@ -22,6 +22,9 @@ export default {
     Sidebar,
     TopBar,
   },
+  mounted() {
+    this.$store.dispatch('setUserInfo');
+  },
   computed: {
     isLoading() {
       return this.$store.getters.isLoading;
