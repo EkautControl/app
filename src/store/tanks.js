@@ -36,6 +36,10 @@ export default {
         batch: payload.batch,
         phase: payload.phase,
         date: payload.date,
+        ferment: payload.ferment,
+        leaven: payload.leaven,
+        generation: payload.generation,
+        reporter: payload.reporter,
       });
       commit('addActiveTank', newProd.data);
     },

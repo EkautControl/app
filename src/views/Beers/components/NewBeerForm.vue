@@ -82,6 +82,7 @@ export default {
           beerType: this.beerType.type,
           brewery: this.brewery,
           averageTime: this.averageTime,
+          reporter: this.$store.getters.getUserName,
         });
         this.$parent.close();
         this.$buefy.toast.open({

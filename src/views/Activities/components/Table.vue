@@ -8,8 +8,7 @@
         icon="magnify"
         custom-class="search-table"
         @input="filterData"
-      >
-      </b-input>
+      ></b-input>
     </b-field>
     <b-table
       :data="filteredData"
@@ -20,33 +19,39 @@
       :pagination-simple="true"
       :per-page="perPage"
       :current-page.sync="currentPage"
+      detailed
+      :show-detail-icon="true"
+      detail-key="id"
     >
       <template slot-scope="props">
         <b-table-column field="type" label="Categoria" centered>
           <span class="is-type">{{ props.row.type }}</span>
         </b-table-column>
 
-        <b-table-column field="description" label="Descrição">{{
-          props.row.description
-        }}</b-table-column>
+        <b-table-column field="title" label="Título">
+          {{ props.row.title }}
+        </b-table-column>
 
         <b-table-column field="creationDate" label="Data" centered>
           {{ props.row.creationDate }}
         </b-table-column>
 
-        <b-table-column field="reporter" label="Responsável" centered>{{
-          props.row.reporter
-        }}</b-table-column>
+        <b-table-column field="reporter" label="Responsável" centered>
+          {{ props.row.reporter }}
+        </b-table-column>
       </template>
       <template slot="empty">
         <section class="section">
           <div class="content has-text-grey has-text-centered">
             <p>
-              <b-icon icon="emoticon-sad" size="is-large"> </b-icon>
+              <b-icon icon="emoticon-sad" size="is-large"></b-icon>
             </p>
             <p>Nenhum resultado encontrado</p>
           </div>
         </section>
+      </template>
+      <template slot="detail" slot-scope="props">
+        <p>{{ props.row.description }}</p>
       </template>
     </b-table>
   </section>

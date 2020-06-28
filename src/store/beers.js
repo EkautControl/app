@@ -27,6 +27,7 @@ export default {
         averageTime: payload.averageTime,
         brewery: payload.brewery,
         type: payload.beerType,
+        reporter: payload.reporter,
       });
       commit('addBeer', beer.data);
     },

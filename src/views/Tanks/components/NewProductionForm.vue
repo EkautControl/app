@@ -7,7 +7,13 @@
       <div class="columns">
         <div class="column is-half">
           <b-field label="Cerveja">
-            <b-dropdown aria-role="list" v-model="selectedBeer" :append-to-body="true">
+            <b-dropdown
+              aria-role="list"
+              v-model="selectedBeer"
+              :append-to-body="true"
+              scrollable
+              max-height="150"
+            >
               <button class="button" slot="trigger" slot-scope="{ active }">
                 <span>{{ selectedBeer.name || 'Selecione a cerveja' }}</span>
                 <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
@@ -32,7 +38,13 @@
             </div>
             <div class="column">
               <b-field label="Tanque">
-                <b-dropdown aria-role="list" v-model="selectedTank" :append-to-body="true">
+                <b-dropdown
+                  aria-role="list"
+                  v-model="selectedTank"
+                  :append-to-body="true"
+                  scrollable
+                  max-height="150"
+                >
                   <button class="button" slot="trigger" slot-scope="{ active }">
                     <span>{{ selectedTank.tank || '--' }}</span>
                     <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
@@ -81,6 +93,39 @@
           </b-field>
         </div>
       </div>
+
+      <div class="columns">
+        <div class="column is-third">
+          <b-field label="Fermento">
+            <b-input
+              type="text"
+              placeholder="Insira o fermento"
+              v-model="ferment"
+              required
+            ></b-input>
+          </b-field>
+        </div>
+        <div class="column is-third">
+          <b-field label="Levedura">
+            <b-input
+              type="text"
+              placeholder="Insira o tipo de levedura"
+              v-model="leaven"
+              required
+            ></b-input>
+          </b-field>
+        </div>
+        <div class="column is-third">
+          <b-field label="Geração">
+            <b-input
+              type="text"
+              placeholder="Insira a geração"
+              v-model="generation"
+              required
+            ></b-input>
+          </b-field>
+        </div>
+      </div>
     </section>
     <div class="modal-card-foot">
       <button class="button cancel-button" type="button" @click="$parent.close()">Cancelar</button>
@@ -101,6 +146,9 @@ export default {
       selectedDate: new Date(),
       batch: 0,
       phases: Phases,
+      ferment: '',
+      leaven: '',
+      generation: '',
     };
   },
   computed: {
@@ -121,6 +169,10 @@ export default {
           batch: this.batch,
           phase: this.selectedPhase.type,
           date: this.selectedDate,
+          ferment: this.ferment,
+          leaven: this.leaven,
+          generation: this.generation,
+          reporter: this.$store.getters.getUserName,
         });
         this.$parent.close();
         this.$buefy.toast.open({
