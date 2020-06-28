@@ -113,22 +113,22 @@ export default {
   align-items: center;
 }
 
-.label {
+.login-card .label {
   color: white;
 }
 
-.sign-in-form.button {
+.login-card .sign-in-form.button {
   background-color: #3396e1;
   border-radius: 12px;
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.sign-in-form.button:hover {
+.login-card .sign-in-form.button:hover {
   background-color: #3396e1;
 }
 
-.sign-in-input {
+.login-card .sign-in-input {
   box-shadow: none;
   outline: 0;
   background-color: #345087;
@@ -137,12 +137,12 @@ export default {
   color: white;
 }
 
-.sign-in-input:focus {
+.login-card .sign-in-input:focus {
   border-color: white;
   box-shadow: none;
 }
 
-.logos {
+.login-card .logos {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,11 +151,11 @@ export default {
   margin-top: 30px;
 }
 
-.sign-in-form.fields {
+.login-card .sign-in-form.fields {
   display: flex;
   flex-direction: column;
 }
-.label {
+.login-card .label {
   order: -1;
   transition: all 0.2s ease-in;
   transform: translateY(23px);
@@ -163,40 +163,40 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .sign-in-form {
+  .login-card .sign-in-form {
     min-width: 150px;
     width: 20%;
     margin-bottom: 10px;
   }
 
-  .login-screen {
+  .login-card .login-screen {
     height: 90vh;
   }
 
-  .ekaut {
+  .login-card .ekaut {
     width: 10%;
     min-width: 70px;
   }
 
-  .logo.control {
+  .login-card .logo.control {
     width: 20%;
     min-width: 120px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .sign-in-form {
+  .login-card .sign-in-form {
     min-width: 220px;
     width: 30%;
     margin-bottom: 10px;
   }
 
-  .ekaut {
+  .login-card .ekaut {
     width: 10%;
     min-width: 80px;
   }
 
-  .logo.control {
+  .login-card .logo.control {
     width: 20%;
     min-width: 150px;
   }
@@ -218,18 +218,18 @@ export default {
     padding-bottom: 10px;
   }
 
-  .ekaut {
+  .login-card .ekaut {
     width: 10%;
     min-width: 100px;
   }
 
-  .logo.control {
+  .login-card .logo.control {
     width: 20%;
     margin-top: 10px;
     min-width: 180px;
   }
 
-  .sign-in-form {
+  .login-card .sign-in-form {
     min-width: 270px;
     width: 30%;
     margin-bottom: 10px;
@@ -260,8 +260,5 @@ export default {
   100% {
     background-position: 4000px -100px;
   }
-}
-input:-internal-autofill-selected {
-  background-color: transparent !important;
 }
 </style>

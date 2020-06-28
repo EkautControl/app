@@ -54,7 +54,7 @@ export default {
     return {
       title: '',
       description: '',
-      reporter: this.$store.getters.getUserName || 'Eduardo Lima',
+      reporter: this.$store.getters.getUserName,
       selectedDate: new Date(),
     };
   },
