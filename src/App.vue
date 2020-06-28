@@ -1,32 +1,72 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+* {
+  font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
+}
+
+html {
+  background-color: #e5e5e5c9;
+}
+
+ins {
+  text-decoration: none;
+  font-weight: normal;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  width: 100%;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
+.submit-button {
   font-weight: bold;
-  color: #2c3e50;
+  background-color: #345087;
+  color: white;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.cancel-button {
+  font-weight: bold;
+  color: #345087;
+  background-color: white;
+  border: none;
+}
+
+.submission-form .modal-card-head {
+  background-color: white;
+  padding: 50px 40px 0;
+}
+
+.submission-form .modal-card-foot {
+  background-color: white;
+  padding: 0px 40px 30px;
+  justify-content: flex-end;
+}
+
+.submission-form .modal-card-body {
+  padding: 40px;
+}
+
+.submission-form .modal-card-title {
+  color: #475198;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+  font-size: 20px;
+}
+
+.submission-form .modal-card-head,
+.submission-form .modal-card-body,
+.submission-form .modal-card-foot {
+  border: none;
 }
 </style>
