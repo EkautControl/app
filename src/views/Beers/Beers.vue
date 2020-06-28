@@ -4,13 +4,13 @@
       <Button text="Nova cerveja" icon="plus.svg" size="lg" :handleClick="openForm" />
     </PageHeader>
     <Divider title="CERVEJAS ATIVAS" />
-    <CardList>
+    <CardList :empty="activeBeers.length === 0">
       <li v-for="beer in activeBeers" :key="beer._id">
         <BeerCard :beer="beer" />
       </li>
     </CardList>
     <Divider title="CERVEJAS INATIVAS" />
-    <CardList>
+    <CardList :empty="inactiveBeers.length === 0">
       <li v-for="beer in inactiveBeers" :key="beer._id">
         <BeerCard :beer="beer" isInactive />
       </li>
