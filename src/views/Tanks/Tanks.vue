@@ -12,7 +12,7 @@
     <Divider title="TANQUES EM USO" />
     <CardList :empty="activeTanks.length === 0">
       <li v-for="tank in activeTanks" :key="tank._id">
-        <TankCard :tank="tank" />
+        <TankCard :tank="tank" v-on:click.native="openTankDetails(tank.tank)" />
       </li>
     </CardList>
   </main>
@@ -45,6 +45,9 @@ export default {
         canCancel: ['escape', 'outside'],
         scroll: 'keep',
       });
+    },
+    openTankDetails(number) {
+      this.$router.push({ name: 'TankDetails', params: { id: number } }).catch(() => {});
     },
   },
   mounted() {
