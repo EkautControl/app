@@ -3,6 +3,7 @@ import Activities from '../views/Activities/Activities.vue';
 import Beers from '../views/Beers/Beers.vue';
 import Layout from '../views/Layout.vue';
 import Login from '../views/Login/Login.vue';
+import BeerDetails from '../views/BeerDetails/BeerDetails.vue';
 
 const routes = [
   {
@@ -35,6 +36,16 @@ const routes = [
         name: 'Beers',
         component: Beers,
         meta: { title: 'Informações das Cervejas' },
+      },
+      {
+        path: 'cervejas/:name',
+        name: 'Beer',
+        component: BeerDetails,
+        meta: { title: 'Detalhes da Cerveja' },
+        beforeEnter(to, from, next) {
+          if (from.name === 'Beers') next();
+          else next({ name: 'Beers' });
+        },
       },
     ],
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="column is-4-desktop is-3-widescreen is-3-mobile">
-    <div class="card">
+    <div class="card" @click="goToBeerDetails">
       <div class="header" :style="`background-color: #${bgColor}`">
         <p class="title">{{ beer.name }}</p>
       </div>
@@ -33,6 +33,13 @@ export default {
         this.bgColor = this.beer.brewery === 'Ekaut' ? 'E47E00' : '9A2195';
       }
     },
+    goToBeerDetails() {
+      this.$store.dispatch('setSelectedBeer', this.beer);
+      this.$router.push({
+        name: 'Beer',
+        params: { name: this.beer.name.replace(/\s/g, ''), beer: this.beer },
+      });
+    },
   },
   mounted() {
     this.setUpColor();
@@ -46,6 +53,7 @@ export default {
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(168, 168, 168, 0.25);
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .header {
