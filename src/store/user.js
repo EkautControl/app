@@ -6,7 +6,9 @@ export default {
       email: '',
       name: '',
       initials: '',
+      subscriptionArn: '',
       notificationType: '',
+      notificationEmail: '',
       phone: '',
     },
   }),
@@ -33,6 +35,13 @@ export default {
     setUserInfo({ commit }) {
       const user = JSON.parse(localStorage.getItem('user'));
       if (user) commit('setUserData', user);
+    },
+    // eslint-disable-next-line no-unused-vars
+    async updateUser({ commit }, newUserData) {
+      const userEmail = newUserData.email;
+      console.log(userEmail);
+      console.log(newUserData);
+      await axios.put(`/user/${userEmail}`, newUserData);
     },
   },
   mutations: {
