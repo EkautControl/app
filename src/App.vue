@@ -48,7 +48,6 @@ ins {
 .submission-form .modal-card-head,
 .production-form .modal-card-head {
   background-color: white;
-  padding: 50px 40px 0;
 }
 
 .submission-form .modal-card-foot,
@@ -59,15 +58,12 @@ ins {
 }
 
 .submission-form .modal-card-body {
-  padding: 40px;
+  padding: 15px 40px;
 }
 
 .submission-form .modal-card-title,
-.production-form .modal-card-body {
-  padding: 40px;
-}
-
 .production-form .modal-card-title {
+  padding: 10px;
   color: #475198;
   text-transform: uppercase;
   font-weight: bold;
@@ -81,5 +77,9 @@ ins {
 .production-form .modal-card-head,
 .production-form .modal-card-foot {
   border: none;
+}
+
+.datepicker .dropdown-content {
+  width: 320px;
 }
 </style>

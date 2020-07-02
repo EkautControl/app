@@ -4,6 +4,15 @@ export default {
   state: {
     details: {},
     isLoaded: false,
+    temperatures: [],
+  },
+  getters: {
+    getProduction(state) {
+      return state.details.production;
+    },
+    getTemperatures(state) {
+      return state.temperatures;
+    },
   },
   mutations: {
     success(state, payload) {
@@ -13,15 +22,27 @@ export default {
     isLoading(state, payload) {
       state.isLoaded = payload.isLoaded;
     },
+    updateProductions(state, data) {
+      state.details = data;
+    },
+    newTemperatures(state, data) {
+      state.temperatures = data;
+    },
   },
   actions: {
+    getTemperatures: async ({ commit }, prodId) => {
+      const res = await axios.get(`/temperature/${prodId}`);
+      console.log(res.data);
+      commit('newTemperatures', res.data);
+    },
     isLoaded: async ({ commit }, isLoaded) => {
       commit('isLoading', { isLoaded });
     },
-    requestTankDetails: async ({ commit }, tankId) => {
+    requestTankDetails: async ({ dispatch, commit }, tankId) => {
       const res = await axios.get(`/production?tank=${tankId}`);
       const [tank] = res.data;
       commit('success', { tank });
+      dispatch('getTemperatures', res.data[0].production._id);
     },
     updateTankPhase: async ({ dispatch }, { productionId, nextPhase, author }) => {
       const res = await axios.put(`/production/phase/${productionId}`, {

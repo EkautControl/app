@@ -6,7 +6,7 @@
     <Divider title="TANQUES EM ALERTA" />
     <CardList :empty="tanksInAlert.length === 0">
       <li v-for="tank in tanksInAlert" :key="tank._id">
-        <TankCard :tank="tank" hasProblem />
+        <TankCard :tank="tank" hasProblem v-on:click.native="openTankDetails(tank.tank)" />
       </li>
     </CardList>
     <Divider title="TANQUES EM USO" />

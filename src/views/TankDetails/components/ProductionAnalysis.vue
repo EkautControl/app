@@ -42,8 +42,6 @@ export default {
         }
       });
     });
-
-    console.log(temp);
     return {
       options: {
         title: { text: 'ECharts Sample' },

@@ -1,5 +1,6 @@
 <template>
   <main class="wrapper" v-if="isLoaded">
+    <Breadcrumbs parentPage="Controle dos Tanques" />
     <div class="tile is-vertical is-ancestor">
       <div class="tile">
         <div class="tile is-parent is-8">
@@ -33,6 +34,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import Registry from './components/Registry.vue';
 import Overview from './components/Overview.vue';
 import ProductionInfo from './components/ProductionInfo.vue';
@@ -48,6 +50,7 @@ export default {
     Monitor,
     ProductionAnalysis,
     Activity,
+    Breadcrumbs,
   },
   beforeMount() {
     this.$store.commit('stopLoading');

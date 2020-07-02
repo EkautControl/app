@@ -30,6 +30,7 @@ const routes = [
         path: 'tanques/:id',
         name: 'TankDetails',
         component: TankDetails,
+        meta: { title: 'Detalhes da Produção' },
       },
       {
         path: 'atividades',

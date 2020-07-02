@@ -40,7 +40,7 @@ export default {
 }
 
 .view {
-  padding: 15px;
+  padding: 50px;
   margin: 0 auto;
   max-width: 1300px;
 }
@@ -49,6 +49,12 @@ export default {
   font-size: 32px;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
+}
+
+@media screen and (max-width: 720px) {
+  .view {
+    padding: 50px 20px;
+  }
 }
 
 @media screen and (max-width: 1023px) {

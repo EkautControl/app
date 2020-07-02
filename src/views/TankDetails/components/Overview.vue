@@ -66,7 +66,7 @@ export default {
             this.$store.dispatch('tank/updateTankPhase', {
               productionId: this.tank.production._id,
               nextPhase: phase,
-              author: 'Eduardo',
+              author: this.$store.getters.getUserName,
             });
           },
         },
@@ -117,7 +117,7 @@ export default {
 
 .change-phase-btn > * {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .is-gapless {
@@ -134,5 +134,10 @@ export default {
   color: white !important;
   padding-right: 10px;
   padding-left: 10px;
+  align-items: center;
+}
+
+.info-card .info {
+  padding-top: 0 !important;
 }
 </style>

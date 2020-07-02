@@ -22,7 +22,7 @@ export default {
         title: payload.title,
         description: payload.description,
         reporter: payload.reporter,
-        date: payload.date,
+        creationDate: payload.date,
       });
       commit('pushActivity', problemRequest.data);
     },

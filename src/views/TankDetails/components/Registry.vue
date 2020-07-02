@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     getDataLabel(dataType) {
-      console.log(dataType);
       return PhasesData[dataType].label;
     },
     getDataSuffix(dataType) {
@@ -81,7 +80,7 @@ export default {
           onSuccess: (data) => {
             this.$store.dispatch('tank/addRegistry', {
               ...data,
-              reporter: 'Eduardo',
+              reporter: this.$store.getters.getUserName,
               phase: this.production.phase,
               productionId: this.production._id,
             });
@@ -92,9 +91,7 @@ export default {
   },
   computed: {
     currentPhaseData() {
-      console.log(this.production);
       return this.getPhaseData(this.production.data.length - 1).filter((data) => data.type !== 2);
-      // ignore temperature
     },
   },
   props: {
