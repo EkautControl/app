@@ -3,6 +3,7 @@ import Activities from '../views/Activities/Activities.vue';
 import Beers from '../views/Beers/Beers.vue';
 import Layout from '../views/Layout.vue';
 import Login from '../views/Login/Login.vue';
+import Config from '../views/Configuration/Config.vue';
 
 const routes = [
   {
@@ -35,6 +36,12 @@ const routes = [
         name: 'Beers',
         component: Beers,
         meta: { title: 'Informações das Cervejas' },
+      },
+      {
+        path: 'configuracao',
+        name: 'Configuration',
+        component: Config,
+        meta: { title: 'Configurações' },
       },
     ],
   },

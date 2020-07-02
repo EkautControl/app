@@ -19,21 +19,30 @@
         </div>
         <b-menu>
           <b-menu-list :activable="true">
-            <b-menu-item
-              label="Controle de Tanques"
-              :active="handleActiveItem('Tanks') || handleActiveItem('Main')"
-              @click="handleRoute('Tanks')"
-            />
-            <b-menu-item
-              label="Histórico de Atividades"
-              :active="handleActiveItem('Activities')"
-              @click="handleRoute('Activities')"
-            />
-            <b-menu-item
-              label="Informações das Cervejas"
-              :active="handleActiveItem('Beers')"
-              @click="handleRoute('Beers')"
-            />
+            <div>
+              <b-menu-item
+                label="Controle de Tanques"
+                :active="handleActiveItem('Tanks') || handleActiveItem('Main')"
+                @click="handleRoute('Tanks')"
+              />
+              <b-menu-item
+                label="Histórico de Atividades"
+                :active="handleActiveItem('Activities')"
+                @click="handleRoute('Activities')"
+              />
+              <b-menu-item
+                label="Informações das Cervejas"
+                :active="handleActiveItem('Beers')"
+                @click="handleRoute('Beers')"
+              />
+            </div>
+            <div>
+              <b-menu-item
+                label="Configurações"
+                :active="handleActiveItem('Configuration')"
+                @click="handleRoute('Configuration')"
+              />
+            </div>
           </b-menu-list>
         </b-menu>
       </div>
@@ -92,6 +101,14 @@ export default {
   font-size: 16px;
   line-height: 22px;
   text-transform: uppercase;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 70vh;
+  justify-content: space-between;
 }
 
 .menu-list a.is-active {
