@@ -3,6 +3,8 @@ import axios from '@/services/axios';
 export default {
   state: () => ({
     beers: [],
+    selectedBeer: {},
+    productions: [],
   }),
   getters: {
     getBeers(state) {
@@ -13,6 +15,12 @@ export default {
     },
     getInactiveBeers(state) {
       return state.beers.filter((beer) => !beer.active);
+    },
+    getSelectedBeer(state) {
+      return state.selectedBeer;
+    },
+    getProductions(state) {
+      return state.productions.flat();
     },
   },
   actions: {
@@ -31,6 +39,13 @@ export default {
       });
       commit('addBeer', beer.data);
     },
+    setSelectedBeer({ commit }, beer) {
+      commit('setSelectedBeer', beer);
+    },
+    async getProductionsByBeerId({ commit }, id) {
+      const productions = await axios.get(`beers/${id}/productions`);
+      commit('setBeerProductions', productions.data);
+    },
   },
   mutations: {
     updateBeers(state, beers) {
@@ -38,6 +53,12 @@ export default {
     },
     addBeer(state, beer) {
       state.beers.push(beer);
+    },
+    setSelectedBeer(state, beer) {
+      state.selectedBeer = beer;
+    },
+    setBeerProductions(state, productions) {
+      state.productions = productions;
     },
   },
 };

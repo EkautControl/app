@@ -115,7 +115,7 @@ export default {
   display: inline-flex;
   background-color: #8d95b9;
   padding: 0.3em 0.8em;
-  width: 90px;
+  width: 100px;
   font-size: 0.7rem;
   align-items: center;
   justify-content: center;

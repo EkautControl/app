@@ -25,6 +25,7 @@ export default {
 .title {
   font-size: 14px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .line {
