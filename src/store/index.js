@@ -4,6 +4,7 @@ import moduleSideBar from './sideBar';
 import moduleLoading from './loading';
 import moduleTanks from './tanks';
 import moduleUser from './user';
+import moduleTank from './tank';
 import moduleBeers from './beers';
 import moduleActivities from './activities';
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     loading: moduleLoading,
     tanks: moduleTanks,
     user: moduleUser,
+    tank: moduleTank,
     beers: moduleBeers,
     activities: moduleActivities,
   },

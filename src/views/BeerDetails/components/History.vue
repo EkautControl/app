@@ -110,14 +110,14 @@ export default {
   watch: {
     productions(value) {
       this.isLoading = false;
-      this.setTableDate(value);
+      this.setTableData(value);
     },
   },
   beforeMount() {
     this.$store.dispatch('getProductionsByBeerId', this.beerId);
   },
   methods: {
-    setTableDate(productions) {
+    setTableData(productions) {
       productions.forEach((record) => {
         return record.data.forEach((data, index) => {
           const row = {

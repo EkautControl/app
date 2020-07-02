@@ -1,6 +1,7 @@
 import Tanks from '../views/Tanks/Tanks.vue';
 import Activities from '../views/Activities/Activities.vue';
 import Beers from '../views/Beers/Beers.vue';
+import TankDetails from '../views/TankDetails/TankDetails.vue';
 import Layout from '../views/Layout.vue';
 import Login from '../views/Login/Login.vue';
 import BeerDetails from '../views/BeerDetails/BeerDetails.vue';
@@ -24,6 +25,12 @@ const routes = [
         name: 'Tanks',
         component: Tanks,
         meta: { title: 'Controle dos Tanques' },
+      },
+      {
+        path: 'tanques/:id',
+        name: 'TankDetails',
+        component: TankDetails,
+        meta: { title: 'Detalhes da Produção' },
       },
       {
         path: 'atividades',

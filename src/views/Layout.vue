@@ -40,7 +40,9 @@ export default {
 }
 
 .view {
-  padding: 50px 60px;
+  padding: 50px;
+  margin: 0 auto;
+  max-width: 1300px;
 }
 
 .view h1 .title {
@@ -49,14 +51,16 @@ export default {
   font-family: 'Open Sans', sans-serif;
 }
 
+@media screen and (max-width: 720px) {
+  .view {
+    padding: 50px 20px;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .views {
     margin-left: 0;
     margin-top: 25px;
-  }
-
-  .view {
-    padding: 40px;
   }
 }
 </style>
