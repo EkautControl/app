@@ -8,44 +8,43 @@ import BeerDetails from '../views/BeerDetails/BeerDetails.vue';
 
 const routes = [
   {
-    path: '/entrar',
+    path: '/login',
     component: Login,
     name: 'Login',
     meta: { title: 'Login' },
   },
   {
-    path: '/',
+    path: '/app',
+    redirect: '/app/tanques',
     component: Layout,
-    redirect: '/tanques',
     name: 'Main',
-    meta: { requiresAuth: true },
     children: [
       {
-        path: 'tanques',
+        path: '/app/tanques',
         name: 'Tanks',
         component: Tanks,
         meta: { title: 'Controle dos Tanques' },
       },
       {
-        path: 'tanques/:id',
+        path: 'app/tanques/:id',
         name: 'TankDetails',
         component: TankDetails,
         meta: { title: 'Detalhes da Produção' },
       },
       {
-        path: 'atividades',
+        path: 'app/atividades',
         name: 'Activities',
         component: Activities,
         meta: { title: 'Histórico de Atividades' },
       },
       {
-        path: 'cervejas',
+        path: 'app/cervejas',
         name: 'Beers',
         component: Beers,
         meta: { title: 'Informações das Cervejas' },
       },
       {
-        path: 'cervejas/:name',
+        path: 'app/cervejas/:name',
         name: 'Beer',
         component: BeerDetails,
         meta: { title: 'Detalhes da Cerveja' },
@@ -59,6 +58,10 @@ const routes = [
   {
     path: '*',
     redirect: '/',
+  },
+  {
+    path: '/',
+    redirect: '/login',
   },
 ];
 

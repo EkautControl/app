@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import { Auth } from 'aws-amplify';
+
 export default {
   name: 'Login',
 
@@ -75,6 +77,7 @@ export default {
 
       try {
         this.animation = true;
+        await Auth.signIn(this.email, this.password);
         this.signingIn = false;
         this.$store.dispatch('getUser', this.email);
         this.$router.push({ name: 'Main' });
